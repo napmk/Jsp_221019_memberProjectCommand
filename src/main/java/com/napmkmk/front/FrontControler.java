@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import com.gyojincompany.member.MDeleteCommand;
+import com.gyojincompany.member.MIdCheckCommand;
 import com.gyojincompany.member.MJoinCommand;
 import com.gyojincompany.member.MLoginCommand;
 
@@ -60,7 +62,7 @@ public class FrontControler extends HttpServlet {
 		
 	}
 	/* get 이냐 post */
-	protected void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void actionDo(HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		String uri = request.getRequestURI(); //
 		System.out.println("uri :" + uri); // :/jsp_221019/test.do 컨텍스트 패스라고한다.
 		String conPath =request.getContextPath();
@@ -86,7 +88,20 @@ public class FrontControler extends HttpServlet {
 
 				MLoginCommand command1 = new MLoginCommand();
 				command1.execute(request, response);
-			}
+		
+		} else if(command.equals("/idCheck.do")) {
+				System.out.println("idCheck.do 요청왔음!");
+	
+				MIdCheckCommand command1 = new MIdCheckCommand();
+				command1.execute(request, response);
+		} else if(command.equals("/logout.do")) {
+			System.out.println("logout.do 요청왔음!");
+			
+			
+			
+	}
+		
+		
 		
 	}
 
